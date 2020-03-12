@@ -2,3 +2,5 @@
 !README.md
 !.gitignore
 !*.h
+!*.c
+binary_tree_print.c
