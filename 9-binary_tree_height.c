@@ -1,5 +1,6 @@
 #include "binary_trees.h"
-void _bt_height(const binary_tree_t *, size_t *, size_t *);
+size_t _bt_height(const binary_tree_t *);
+size_t max(size_t a, size_t b);
 
 /**
  * binary_tree_height - measures the height of a binary tree
@@ -9,40 +10,29 @@ void _bt_height(const binary_tree_t *, size_t *, size_t *);
  */
 size_t binary_tree_height(const binary_tree_t *tree)
 {
-	size_t left_h = 0, right_h = 0, max_h = 0;
+	size_t left_h = 0, right_h = 0;
 
 	if (tree != NULL)
 	{
-		_bt_height(tree->left, &left_h, &right_h);
-		if (left_h > right_h)
-			max_h = left_h;
-		else
-			max_h = right_h;
-		left_h = 0;
-		right_h = 0;
-		_bt_height(tree->right, &left_h, &right_h);
-		if (left_h > max_h)
-			max_h = left_h;
-		if (right_h > max_h)
-			max_h = right_h;
+		left_h = _bt_height(tree->left);
+		right_h = _bt_height(tree->right);
+		return (max(left_h, right_h));
 	}
-	return (max_h);
+	return (0);
 }
 
-/**
- * _bt_height - recursively iterates through the tree
- *
- * @tree: binary tree to iterate through
- * @left: pointer used to count left side height
- * @right: pointer used to count right side height
- */
-void _bt_height(const binary_tree_t *tree, size_t *left, size_t *right)
+size_t _bt_height(const binary_tree_t *tree)
 {
-	if (tree != NULL)
-	{
-		_bt_height(tree->left, left, right);
-		*left += 1;
-		_bt_height(tree->right, left, right);
-		*right += 1;
-	}
+	size_t left_h = 0, right_h = 0;
+
+	if (tree == NULL)
+		return (0);
+	left_h = _bt_height(tree->left);
+	right_h = _bt_height(tree->right);
+	return (1 + max(left_h, right_h));
+}
+
+size_t max(size_t a, size_t b)
+{
+	return (a > b ? a: b);
 }
