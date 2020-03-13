@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 size_t _bt_height(const binary_tree_t *);
-size_t max(size_t a, size_t b);
+size_t max(size_t, size_t);
 
 /**
  * binary_tree_height - measures the height of a binary tree
@@ -21,6 +21,12 @@ size_t binary_tree_height(const binary_tree_t *tree)
 	return (0);
 }
 
+/**
+ * _bt_height - since the root must not be counted the recursion occurs here
+ *
+ * @tree: tree to iterate through
+ * Return: height of tree
+ */
 size_t _bt_height(const binary_tree_t *tree)
 {
 	size_t left_h = 0, right_h = 0;
@@ -32,7 +38,14 @@ size_t _bt_height(const binary_tree_t *tree)
 	return (1 + max(left_h, right_h));
 }
 
+/**
+ * max - finds the max between 2 numbers
+ *
+ * @a: first number
+ * @b: second number
+ * Return: the max between a and b
+ */
 size_t max(size_t a, size_t b)
 {
-	return (a > b ? a: b);
+	return (a > b ? a : b);
 }
