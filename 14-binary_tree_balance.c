@@ -5,7 +5,7 @@ int max(int, int);
 
 
 /**
- * binary_tree_height - calculates the balance factor of a binary tree
+ * binary_tree_balance - calculates the balance factor of a binary tree
  *
  * @tree: tree to calculate balance factor of
  * Return: the balance factor of the tree
